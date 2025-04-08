@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,6 +12,18 @@ public class Main {
         for (Vehiculo v : vehiculos) {
             VehiculoPrinter.imprimir(v);
             System.out.println("----------------");
+        }
+
+        String patenteBuscada = "JKL012";
+        Optional<Vehiculo> encontrado = vehiculos.stream()
+                .filter(v -> v.getPatente().equalsIgnoreCase(patenteBuscada))
+                .findFirst();
+
+        if (encontrado.isPresent()) {
+            System.out.println("Vehículo con patente " + patenteBuscada + " encontrado:");
+            VehiculoPrinter.imprimir(encontrado.get());
+        } else {
+            System.out.println("No se encontró vehículo con la patente " + patenteBuscada);
         }
     }
 }
