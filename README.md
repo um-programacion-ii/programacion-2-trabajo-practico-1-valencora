@@ -1,6 +1,64 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/-JQrLgaz)
 # 🧠 Trabajo Práctico: Sistema de Gestión de Vehículos (Java + SOLID + GitHub)
 
+## Alumno: 
+Nombre y apellido: Valentin Coratolo
+
+### ¿Cómo ejecutar?
+1. Clonar el repositorio:
+```bash
+git clone git@github.com:um-programacion-ii/programacion-2-trabajo-practico-1-valencora.git
+cd programacion-2-trabajo-practico-1-valencora 
+```
+2. Compila el código: 
+Asegurarse primero de estar en la carpeta donde están los archivos .java
+```bash
+javac *.java
+```
+3. Ejecuta el código:
+```bash
+java Main.java 
+```
+
+### Requisitos previos
+   -Java JDK 8 o superior instalado.
+   Verificá que tengas `javac` y `java` instalados:
+   ```bash
+      java -version
+      javac -version
+   ```
+   -IDE de tu elección (Eclipse, IntelliJ IDEA, etc.) o terminal para compilar y ejecutar.
+   -Git instalado para clonar el repositorio.
+
+### Ejemplo de Uso
+```bash
+   public class Main {
+    public static void main(String[] args) {
+        List<Vehiculo> vehiculos = new ArrayList<>();
+        vehiculos.add(new Vehiculo("ABC123", "Toyota", 2020, 1500));
+        vehiculos.add(new Camion("JKL012", "Scania", 2018, 5000, true));
+        vehiculos.add(new Auto("MNO345", "Honda", 2021, 800, 5));
+
+        for (Vehiculo v : vehiculos) {
+            VehiculoPrinter.imprimir(v);
+            System.out.println("----------------");
+        }
+
+        String patenteBuscada = "JKL012";
+        Optional<Vehiculo> encontrado = vehiculos.stream()
+                .filter(v -> v.getPatente().equalsIgnoreCase(patenteBuscada))
+                .findFirst();
+
+        if (encontrado.isPresent()) {
+            System.out.println("Vehículo con patente " + patenteBuscada + " encontrado:");
+            VehiculoPrinter.imprimir(encontrado.get());
+        } else {
+            System.out.println("No se encontró vehículo con la patente " + patenteBuscada);
+        }
+    }
+}
+   ```
+
 ## 📌 Objetivo General
 
 Desarrollar una aplicación en Java para gestionar vehículos de una empresa, aplicando los principios de programación orientada a objetos y los **primeros tres principios SOLID**:  
