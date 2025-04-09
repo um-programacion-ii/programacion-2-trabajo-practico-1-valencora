@@ -8,9 +8,9 @@ public class VehiculoPrinter {
         System.out.println("  Año: " + vehiculo.getAnio());
         System.out.println("  Capacidad de carga: " + vehiculo.getCapacidadCargaKg() + " kg");
 
-        if (vehiculo instanceof Camion) {
-            Camion camion = (Camion) vehiculo;
-            System.out.println("  ¿Tiene acoplado?: " + (camion.isTieneAcoplado() ? "Sí" : "No"));
+        String infoAdicional = vehiculo.getInformacionAdicional();
+        if (infoAdicional != null && !infoAdicional.isEmpty()) {
+            System.out.println("  " + infoAdicional);
         }
     }
 }
